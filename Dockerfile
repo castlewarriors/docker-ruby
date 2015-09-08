@@ -28,7 +28,8 @@ RUN apt-get update \
 # skip installing gem documentation
 RUN echo 'gem: --no-rdoc --no-ri' >> "$HOME/.gemrc"
 
-RUN gem install bundler \
+RUN gem update --system && \
+  gem install bundler \
   && bundle config --global path "$GEM_HOME" \
   && bundle config --global bin "$GEM_HOME/bin"
 
